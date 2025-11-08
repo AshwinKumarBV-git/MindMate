@@ -8,7 +8,7 @@ The MindMate is an experimental app that puts the power of cutting-edge Generati
 MindMate is a calm, privacy-first mental health support app built on top of Google’s AI Edge demo architecture.
 It uses offline large language model (LLM) inference via Gemma / llama.cpp to deliver supportive, empathetic conversations, mood tracking, and daily reflections — all without internet connectivity.
 
-Install the apk from the [**latest release**](https://github.com/AshwinKumarBV-git/MindMate/releases/download/v0.1.0/MindMateV01.apk)
+Install the apk from the [**latest release**](https://github.com/AshwinKumarBV-git/MindMate/releases/download/v1.0.0-beta/MindMateV03.apk)
 
 > [!IMPORTANT]
 > You must uninstall all previous versions of the app before installing this one. Past versions will no longer be working and supported.
