@@ -38,7 +38,7 @@
         android:required="false" />
 
     <application
-        android:name="${applicationName}"
+        android:name=".GalleryApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

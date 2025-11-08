@@ -16,6 +16,7 @@
 
 package com.google.ai.edge.gallery.ui.common
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
@@ -43,6 +44,8 @@ import androidx.compose.ui.unit.dp
 import com.google.ai.edge.gallery.R
 import com.google.ai.edge.gallery.data.Task
 
+private const val TAG = "TaskIcon"
+
 private val SHAPES: List<Int> =
   listOf(
     // Ask image.
@@ -66,6 +69,14 @@ fun TaskIcon(
   width: Dp = 56.dp,
   animationProgress: Float = 1f,
 ) {
+  Log.d(TAG, "========== TaskIcon START ==========")
+  Log.d(TAG, "Task ID: ${task.id}")
+  Log.d(TAG, "Task label: ${task.label}")
+  Log.d(TAG, "Task icon (ImageVector): ${task.icon}")
+  Log.d(TAG, "Task iconVectorResourceId: ${task.iconVectorResourceId}")
+  Log.d(TAG, "Task index: ${task.index}")
+  Log.d(TAG, "Width: $width, Animation progress: $animationProgress")
+  
   val revealingBrush =
     linearGradient(
       colorStops =
@@ -74,8 +85,14 @@ fun TaskIcon(
           (1f + 0.2f) * (1 - animationProgress) to Color.Transparent,
         )
     )
+  Log.d(TAG, "Revealing brush created successfully")
+  
   Box(modifier = modifier.width(width).aspectRatio(1f), contentAlignment = Alignment.Center) {
+    Log.d(TAG, "Creating background gradient brush")
     val brush = linearGradient(colors = getTaskBgGradientColors(task = task))
+    Log.d(TAG, "Background brush created successfully")
+    
+    Log.d(TAG, "Creating background shape image")
     Image(
       painter = getTaskIconBgShape(task = task),
       contentDescription = null,
@@ -95,12 +112,40 @@ fun TaskIcon(
           },
       contentScale = ContentScale.FillHeight,
     )
+    Log.d(TAG, "Background image rendered successfully")
+    
     var iconAnimationProgress = 0f
     if (animationProgress >= 0.8) {
       iconAnimationProgress = (animationProgress - 0.8f) / 0.2f
     }
+    Log.d(TAG, "Icon animation progress: $iconAnimationProgress")
+    
+    Log.d(TAG, "Attempting to load icon...")
+    Log.d(TAG, "task.icon is null: ${task.icon == null}")
+    Log.d(TAG, "task.iconVectorResourceId: ${task.iconVectorResourceId}")
+    
+    val iconVector = if (task.icon != null) {
+      Log.d(TAG, "Using task.icon (ImageVector)")
+      Log.d(TAG, "Icon name: ${task.icon!!.name}")
+      Log.d(TAG, "Icon default width: ${task.icon!!.defaultWidth}")
+      Log.d(TAG, "Icon default height: ${task.icon!!.defaultHeight}")
+      task.icon!!
+    } else {
+      Log.d(TAG, "task.icon is null, attempting to load from resource ID: ${task.iconVectorResourceId}")
+      if (task.iconVectorResourceId == null) {
+        Log.e(TAG, "ERROR: Both task.icon and task.iconVectorResourceId are null!")
+        throw IllegalStateException("Task ${task.id} has no icon defined")
+      }
+      Log.d(TAG, "Loading ImageVector from resource ID: 0x${task.iconVectorResourceId!!.toString(16)}")
+      val vector = ImageVector.vectorResource(task.iconVectorResourceId!!)
+      Log.d(TAG, "ImageVector loaded successfully from resource")
+      Log.d(TAG, "Loaded icon name: ${vector.name}")
+      vector
+    }
+    
+    Log.d(TAG, "Rendering Icon composable with vector: $iconVector")
     Icon(
-      task.icon ?: ImageVector.vectorResource(task.iconVectorResourceId!!),
+      iconVector,
       tint = Color.White,
       modifier =
         Modifier.size(width * 0.55f)
@@ -108,13 +153,21 @@ fun TaskIcon(
           .scale(iconAnimationProgress),
       contentDescription = null,
     )
+    Log.d(TAG, "Icon rendered successfully")
+    Log.d(TAG, "========== TaskIcon END ==========")
   }
 }
 
 @Composable
 private fun getTaskIconBgShape(task: Task): Painter {
+  Log.d(TAG, "getTaskIconBgShape called for task: ${task.id}")
   val colorIndex: Int = task.index % SHAPES.size
-  return painterResource(SHAPES[colorIndex])
+  Log.d(TAG, "Color index: $colorIndex (task.index=${task.index}, SHAPES.size=${SHAPES.size})")
+  Log.d(TAG, "Selected shape resource ID: 0x${SHAPES[colorIndex].toString(16)}")
+  
+  val painter = painterResource(SHAPES[colorIndex])
+  Log.d(TAG, "Painter loaded successfully")
+  return painter
 }
 
 // @Preview(showBackground = true)
