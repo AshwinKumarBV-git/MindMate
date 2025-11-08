@@ -25,9 +25,12 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
+import com.google.ai.edge.gallery.ui.common.GlassCard
+import com.google.ai.edge.gallery.ui.common.GradientBackground
 import com.google.ai.edge.gallery.ui.modelmanager.ModelManagerViewModel
 
 private const val TAG = "MentalHealthHomeScreen"
@@ -69,13 +72,15 @@ fun MentalHealthHomeScreen(
   when (currentScreen) {
     MentalHealthScreen.Dashboard -> {
       Log.d(TAG, "Rendering Dashboard")
-      DashboardContent(
-        bottomPadding = bottomPadding,
-        onNavigate = { screen -> 
-          Log.d(TAG, "Navigation requested to: $screen")
-          currentScreen = screen 
-        }
-      )
+      GradientBackground {
+        DashboardContent(
+          bottomPadding = bottomPadding,
+          onNavigate = { screen -> 
+            Log.d(TAG, "Navigation requested to: $screen")
+            currentScreen = screen 
+          }
+        )
+      }
     }
     MentalHealthScreen.MoodCheckIn -> MoodCheckInScreen(
       modelManagerViewModel = modelManagerViewModel,
@@ -126,6 +131,7 @@ private fun DashboardContent(
       text = "Mental Health Companion",
       style = MaterialTheme.typography.headlineMedium,
       textAlign = TextAlign.Center,
+      color = Color(0xFF1A1A1A),
       modifier = Modifier.padding(vertical = 16.dp)
     )
     
@@ -133,7 +139,7 @@ private fun DashboardContent(
       text = "Choose a tool to support your well-being",
       style = MaterialTheme.typography.bodyMedium,
       textAlign = TextAlign.Center,
-      color = MaterialTheme.colorScheme.onSurfaceVariant,
+      color = Color(0xFF2A2A2A),
       modifier = Modifier.padding(bottom = 24.dp)
     )
     
@@ -203,16 +209,14 @@ private fun FeatureCard(
 ) {
   Log.d(TAG, "Rendering FeatureCard: $title")
   
-  Card(
+  GlassCard(
     modifier = Modifier
       .fillMaxWidth()
       .clickable(onClick = onClick),
-    colors = if (isUrgent) {
-      CardDefaults.cardColors(
-        containerColor = MaterialTheme.colorScheme.errorContainer
-      )
+    backgroundColor = if (isUrgent) {
+      MaterialTheme.colorScheme.errorContainer.copy(alpha = 0.25f)
     } else {
-      CardDefaults.cardColors()
+      MaterialTheme.colorScheme.surface.copy(alpha = 0.20f)
     }
   ) {
     Column(
@@ -222,16 +226,16 @@ private fun FeatureCard(
         text = title,
         style = MaterialTheme.typography.titleMedium,
         color = if (isUrgent) {
-          MaterialTheme.colorScheme.error
+          Color(0xFFB00020)
         } else {
-          MaterialTheme.colorScheme.primary
+          Color(0xFF1A1A1A)
         }
       )
       Spacer(modifier = Modifier.height(4.dp))
       Text(
         text = description,
         style = MaterialTheme.typography.bodySmall,
-        color = MaterialTheme.colorScheme.onSurfaceVariant
+        color = Color(0xFF3F3F3F)
       )
     }
   }

@@ -133,100 +133,100 @@ val LocalCustomColors = staticCompositionLocalOf { CustomColors() }
 
 val lightCustomColors =
   CustomColors(
-    appTitleGradientColors = listOf(Color(0xFF85B1F8), Color(0xFF3174F1)),
-    tabHeaderBgColor = Color(0xFF3174F1),
-    taskCardBgColor = surfaceContainerLowestLight,
+    appTitleGradientColors = listOf(Color(0xFFA7C7E7), Color(0xFF9AD1C6)),  // Soft blue to teal
+    tabHeaderBgColor = Color(0xFFA7C7E7),  // Soft blue
+    taskCardBgColor = Color(0x40FFFFFF),  // Translucent white (glassmorphism)
     taskBgColors =
       listOf(
-        // red
-        Color(0xFFFFF5F5),
-        // green
-        Color(0xFFF4FBF6),
-        // blue
-        Color(0xFFF1F6FE),
-        // yellow
-        Color(0xFFFFFBF0),
+        // Soft lavender
+        Color(0xFFF5E8F8),
+        // Soft teal
+        Color(0xFFE8F5F2),
+        // Soft blue
+        Color(0xFFE8F0F7),
+        // Soft cream
+        Color(0xFFF5F0E8),
       ),
     taskBgGradientColors =
       listOf(
-        // red
-        listOf(Color(0xFFE25F57), Color(0xFFDB372D)),
-        // green
-        listOf(Color(0xFF41A15F), Color(0xFF128937)),
-        // blue
-        listOf(Color(0xFF669DF6), Color(0xFF3174F1)),
-        // yellow
-        listOf(Color(0xFFFDD45D), Color(0xFFCAA12A)),
+        // Lavender gradient
+        listOf(Color(0xFFC9B7E8), Color(0xFFB7A0D8)),
+        // Teal gradient
+        listOf(Color(0xFF9AD1C6), Color(0xFF7AB9AE)),
+        // Blue gradient
+        listOf(Color(0xFFA7C7E7), Color(0xFF87A7C7)),
+        // Cream gradient
+        listOf(Color(0xFFE8D4B0), Color(0xFFC8B490)),
       ),
     taskIconColors =
       listOf(
-        // red.
-        Color(0xFFDB372D),
-        // green
-        Color(0xFF128937),
-        // blue
-        Color(0xFF3174F1),
-        // yellow
-        Color(0xFFCAA12A),
+        // Lavender
+        Color(0xFFB7A0D8),
+        // Teal
+        Color(0xFF7AB9AE),
+        // Blue
+        Color(0xFF87A7C7),
+        // Cream
+        Color(0xFFC8B490),
       ),
-    taskIconShapeBgColor = Color.White,
-    homeBottomGradient = listOf(Color(0x00F8F9FF), Color(0xffFFEFC9)),
-    agentBubbleBgColor = Color(0xFFe9eef6),
-    userBubbleBgColor = Color(0xFF32628D),
-    linkColor = Color(0xFF32628D),
-    successColor = Color(0xff3d860b),
-    recordButtonBgColor = Color(0xFFEE675C),
-    waveFormBgColor = Color(0xFFaaaaaa),
-    modelInfoIconColor = Color(0xFFCCCCCC),
+    taskIconShapeBgColor = Color(0xFFFAFBFC),  // Off-white
+    homeBottomGradient = listOf(Color(0x00F5F7FA), Color(0xFFE8F0F7)),  // Fade to soft blue
+    agentBubbleBgColor = Color(0x40A7C7E7),  // Translucent blue (glassmorphism)
+    userBubbleBgColor = Color(0xFF9AD1C6),  // Teal
+    linkColor = Color(0xFF7A9FBF),  // Muted blue
+    successColor = Color(0xFF7AB9AE),  // Teal
+    recordButtonBgColor = Color(0xFFC9B7E8),  // Lavender
+    waveFormBgColor = Color(0xFFB0C0D0),  // Soft gray-blue
+    modelInfoIconColor = Color(0xFFD0DCE8),  // Very soft outline
   )
 
 val darkCustomColors =
   CustomColors(
-    appTitleGradientColors = listOf(Color(0xFF85B1F8), Color(0xFF3174F1)),
-    tabHeaderBgColor = Color(0xFF3174F1),
-    taskCardBgColor = surfaceContainerHighDark,
+    appTitleGradientColors = listOf(Color(0xFF7A9FBF), Color(0xFF6FA99E)),  // Muted blue to teal
+    tabHeaderBgColor = Color(0xFF7A9FBF),  // Muted blue
+    taskCardBgColor = Color(0x30FFFFFF),  // Translucent white (darker mode glassmorphism)
     taskBgColors =
       listOf(
-        // red
-        Color(0xFF181210),
-        // green
-        Color(0xFF131711),
-        // blue
-        Color(0xFF191924),
-        // yellow
-        Color(0xFF1A1813),
+        // Dark lavender
+        Color(0xFF2A2238),
+        // Dark teal
+        Color(0xFF223A35),
+        // Dark blue
+        Color(0xFF223848),
+        // Dark cream
+        Color(0xFF3A3228),
       ),
     taskBgGradientColors =
       listOf(
-        // red
-        listOf(Color(0xFFE25F57), Color(0xFFDB372D)),
-        // green
-        listOf(Color(0xFF41A15F), Color(0xFF128937)),
-        // blue
-        listOf(Color(0xFF669DF6), Color(0xFF3174F1)),
-        // yellow
-        listOf(Color(0xFFFDD45D), Color(0xFFCAA12A)),
+        // Muted lavender gradient
+        listOf(Color(0xFF9F8FC0), Color(0xFF8F7FB0)),
+        // Muted teal gradient
+        listOf(Color(0xFF6FA99E), Color(0xFF5F998E)),
+        // Muted blue gradient
+        listOf(Color(0xFF7A9FBF), Color(0xFF6A8FAF)),
+        // Muted cream gradient
+        listOf(Color(0xFFC8B490), Color(0xFFB8A480)),
       ),
     taskIconColors =
       listOf(
-        // red.
-        Color(0xFFE25F57),
-        // green
-        Color(0xFF41A15F),
-        // blue
-        Color(0xFF669DF6),
-        // yellow
-        Color(0xFFCAA12A),
+        // Muted lavender
+        Color(0xFF9F8FC0),
+        // Muted teal
+        Color(0xFF6FA99E),
+        // Muted blue
+        Color(0xFF7A9FBF),
+        // Muted cream
+        Color(0xFFC8B490),
       ),
-    taskIconShapeBgColor = Color(0xFF202124),
-    homeBottomGradient = listOf(Color(0x00F8F9FF), Color(0x1AF6AD01)),
-    agentBubbleBgColor = Color(0xFF1b1c1d),
-    userBubbleBgColor = Color(0xFF1f3760),
-    linkColor = Color(0xFF9DCAFC),
-    successColor = Color(0xFFA1CE83),
-    recordButtonBgColor = Color(0xFFEE675C),
-    waveFormBgColor = Color(0xFFaaaaaa),
-    modelInfoIconColor = Color(0xFFCCCCCC),
+    taskIconShapeBgColor = Color(0xFF1E2E3E),  // Dark surface
+    homeBottomGradient = listOf(Color(0x001A2A3A), Color(0x30223848)),  // Fade to dark blue
+    agentBubbleBgColor = Color(0x307A9FBF),  // Translucent muted blue (glassmorphism)
+    userBubbleBgColor = Color(0xFF6FA99E),  // Muted teal
+    linkColor = Color(0xFFA7C7E7),  // Soft blue
+    successColor = Color(0xFF9AD1C6),  // Teal
+    recordButtonBgColor = Color(0xFF9F8FC0),  // Muted lavender
+    waveFormBgColor = Color(0xFF4A5A6A),  // Muted gray
+    modelInfoIconColor = Color(0xFF3A4A5A),  // Subtle outline
   )
 
 val MaterialTheme.customColors: CustomColors
@@ -251,7 +251,7 @@ fun StatusBarColorController(useDarkTheme: Boolean) {
 }
 
 @Composable
-fun GalleryTheme(content: @Composable () -> Unit) {
+fun MindMateTheme(content: @Composable () -> Unit) {
   val themeOverride = ThemeSettings.themeOverride
   val darkTheme: Boolean =
     (isSystemInDarkTheme() || themeOverride.value == Theme.THEME_DARK) &&
@@ -270,4 +270,11 @@ fun GalleryTheme(content: @Composable () -> Unit) {
   CompositionLocalProvider(LocalCustomColors provides customColorsPalette) {
     MaterialTheme(colorScheme = colorScheme, typography = AppTypography, content = content)
   }
+}
+
+// Deprecated: Use MindMateTheme instead
+@Deprecated("Use MindMateTheme instead", ReplaceWith("MindMateTheme(content)"))
+@Composable
+fun GalleryTheme(content: @Composable () -> Unit) {
+  MindMateTheme(content)
 }

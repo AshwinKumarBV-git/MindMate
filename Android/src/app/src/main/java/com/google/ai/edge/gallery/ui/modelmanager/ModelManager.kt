@@ -36,6 +36,7 @@ import com.google.ai.edge.gallery.data.AppBarAction
 import com.google.ai.edge.gallery.data.AppBarActionType
 import com.google.ai.edge.gallery.data.Model
 import com.google.ai.edge.gallery.data.Task
+import com.google.ai.edge.gallery.ui.common.GradientBackground
 
 /** A screen to manage models. */
 @OptIn(ExperimentalMaterial3Api::class)
@@ -80,13 +81,15 @@ fun ModelManager(
       )
     },
   ) { innerPadding ->
-    ModelList(
-      task = task,
-      modelManagerViewModel = viewModel,
-      contentPadding = innerPadding,
-      onModelClicked = onModelClicked,
-      modifier = Modifier.fillMaxSize(),
-    )
+    GradientBackground {
+      ModelList(
+        task = task,
+        modelManagerViewModel = viewModel,
+        contentPadding = innerPadding,
+        onModelClicked = onModelClicked,
+        modifier = Modifier.fillMaxSize(),
+      )
+    }
   }
 }
 

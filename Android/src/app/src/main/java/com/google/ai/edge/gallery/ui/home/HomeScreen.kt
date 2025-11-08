@@ -117,6 +117,8 @@ import com.google.ai.edge.gallery.data.CategoryInfo
 import com.google.ai.edge.gallery.data.Task
 import com.google.ai.edge.gallery.firebaseAnalytics
 import com.google.ai.edge.gallery.proto.ImportedModel
+import com.google.ai.edge.gallery.ui.common.GlassCard
+import com.google.ai.edge.gallery.ui.common.GradientBackground
 import com.google.ai.edge.gallery.ui.common.RevealingText
 import com.google.ai.edge.gallery.ui.common.SwipingText
 import com.google.ai.edge.gallery.ui.common.TaskIcon
@@ -363,11 +365,8 @@ fun HomeScreen(
           }
         },
       ) { innerPadding ->
-        // Outer box for coloring the background edge to edge.
-        Box(
-          contentAlignment = Alignment.TopCenter,
-          modifier = Modifier.fillMaxSize().background(MaterialTheme.colorScheme.surfaceContainer),
-        ) {
+        // Gradient background for MindMate calming aesthetic
+        GradientBackground {
           // Inner box to hold content.
           Box(
             contentAlignment = Alignment.TopCenter,
@@ -689,7 +688,7 @@ private fun IntroText() {
           url = url,
           styles =
             TextLinkStyles(
-              style = SpanStyle(color = linkColor, textDecoration = TextDecoration.Underline)
+              style = SpanStyle(color = Color(0xFF2A5A7A), textDecoration = TextDecoration.Underline)
             ),
           linkInteractionListener = { _ ->
             firebaseAnalytics?.logEvent("resource_link_click", bundleOf("link_destination" to url))
@@ -703,6 +702,7 @@ private fun IntroText() {
   Text(
     introText,
     style = MaterialTheme.typography.bodyMedium,
+    color = Color(0xFF2A2A2A),
     modifier =
       Modifier.graphicsLayer {
         alpha = progress
@@ -776,7 +776,7 @@ private fun CategoryTabHeader(
           modifier = Modifier.padding(horizontal = 16.dp),
           style = MaterialTheme.typography.labelLarge,
           color =
-            if (selectedIndex == index) Color.White else MaterialTheme.colorScheme.onSurfaceVariant,
+            if (selectedIndex == index) Color.White else Color(0xFF2A2A2A),
         )
       }
     }
@@ -878,14 +878,13 @@ private fun TaskCard(task: Task, index: Int, onClick: () -> Unit, modifier: Modi
     )
 
   val cbTask = stringResource(R.string.cd_task_card, task.label, task.models.size)
-  Card(
+  GlassCard(
     modifier =
       modifier
-        .clip(RoundedCornerShape(24.dp))
         .clickable(onClick = onClick)
         .graphicsLayer { alpha = progress }
         .semantics { contentDescription = cbTask },
-    colors = CardDefaults.cardColors(containerColor = MaterialTheme.customColors.taskCardBgColor),
+    backgroundColor = MaterialTheme.customColors.taskCardBgColor,
   ) {
     Row(
       modifier = Modifier.fillMaxSize().padding(24.dp),
@@ -896,12 +895,12 @@ private fun TaskCard(task: Task, index: Int, onClick: () -> Unit, modifier: Modi
       Column {
         Text(
           task.label,
-          color = MaterialTheme.colorScheme.onSurface,
+          color = Color(0xFF1A1A1A),
           style = MaterialTheme.typography.titleMedium,
         )
         Text(
           curModelCountLabel,
-          color = MaterialTheme.colorScheme.onSurfaceVariant,
+          color = Color(0xFF3F3F3F),
           style = MaterialTheme.typography.bodyMedium,
           modifier = Modifier.clearAndSetSemantics {},
         )

@@ -25,6 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.core.os.bundleOf
 import com.google.ai.edge.gallery.data.BuiltInTaskId
 import com.google.ai.edge.gallery.firebaseAnalytics
+import com.google.ai.edge.gallery.ui.common.GradientBackground
 import com.google.ai.edge.gallery.ui.common.chat.ChatMessageAudioClip
 import com.google.ai.edge.gallery.ui.common.chat.ChatMessageImage
 import com.google.ai.edge.gallery.ui.common.chat.ChatMessageText
@@ -90,10 +91,11 @@ fun ChatViewWrapper(
   val context = LocalContext.current
   val task = modelManagerViewModel.getTaskById(id = taskId)!!
 
-  ChatView(
-    task = task,
-    viewModel = viewModel,
-    modelManagerViewModel = modelManagerViewModel,
+  GradientBackground {
+    ChatView(
+      task = task,
+      viewModel = viewModel,
+      modelManagerViewModel = modelManagerViewModel,
     onSendMessage = { model, messages ->
       for (message in messages) {
         viewModel.addMessage(model = model, message = message)
@@ -160,5 +162,6 @@ fun ChatViewWrapper(
     onStopButtonClicked = { model -> viewModel.stopResponse(model = model) },
     navigateUp = navigateUp,
     modifier = modifier,
-  )
+    )
+  }
 }

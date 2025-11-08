@@ -26,6 +26,7 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -33,6 +34,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.google.ai.edge.gallery.customtasks.mentalhealth.prompts.MentalHealthPrompts
 import com.google.ai.edge.gallery.data.BuiltInTaskId
 import com.google.ai.edge.gallery.data.ModelDownloadStatusType
+import com.google.ai.edge.gallery.ui.common.GradientBackground
 import com.google.ai.edge.gallery.ui.llmsingleturn.LlmSingleTurnViewModel
 import com.google.ai.edge.gallery.ui.modelmanager.ModelInitializationStatusType
 import com.google.ai.edge.gallery.ui.modelmanager.ModelManagerViewModel
@@ -126,19 +128,21 @@ fun MoodCheckInScreen(
       )
     }
   ) { innerPadding ->
-    Column(
-      modifier = Modifier
-        .fillMaxSize()
-        .padding(innerPadding)
-        .padding(16.dp)
-        .verticalScroll(rememberScrollState()),
-      horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+    GradientBackground {
+      Column(
+        modifier = Modifier
+          .fillMaxSize()
+          .padding(innerPadding)
+          .padding(16.dp)
+          .verticalScroll(rememberScrollState()),
+        horizontalAlignment = Alignment.CenterHorizontally
+      ) {
       // Title
       Text(
         text = "How are you feeling today?",
         style = MaterialTheme.typography.headlineSmall,
         textAlign = TextAlign.Center,
+        color = Color(0xFF1A1A1A),
         modifier = Modifier.padding(bottom = 24.dp)
       )
       
@@ -198,7 +202,7 @@ fun MoodCheckInScreen(
         Text(
           text = "Initializing model...",
           style = MaterialTheme.typography.bodyMedium,
-          color = MaterialTheme.colorScheme.secondary
+          color = Color(0xFF2A2A2A)
         )
       }
       
@@ -207,7 +211,7 @@ fun MoodCheckInScreen(
         Text(
           text = "Please download a model first",
           style = MaterialTheme.typography.bodyMedium,
-          color = MaterialTheme.colorScheme.error
+          color = Color(0xFFB00020)
         )
       }
       
@@ -232,17 +236,18 @@ fun MoodCheckInScreen(
             Text(
               text = "Reflection",
               style = MaterialTheme.typography.titleMedium,
-              color = MaterialTheme.colorScheme.onSecondaryContainer,
+              color = Color(0xFF1A1A1A),
               modifier = Modifier.padding(bottom = 8.dp)
             )
             Text(
               text = response,
               style = MaterialTheme.typography.bodyMedium,
-              color = MaterialTheme.colorScheme.onSecondaryContainer
+              color = Color(0xFF2A2A2A)
             )
           }
         }
       }
+    }
     }
   }
 }

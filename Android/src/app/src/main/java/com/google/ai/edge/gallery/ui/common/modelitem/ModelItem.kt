@@ -64,6 +64,7 @@ import androidx.compose.ui.unit.dp
 import com.google.ai.edge.gallery.R
 import com.google.ai.edge.gallery.data.Model
 import com.google.ai.edge.gallery.data.Task
+import com.google.ai.edge.gallery.ui.common.GlassCard
 import com.google.ai.edge.gallery.ui.common.MarkdownText
 import com.google.ai.edge.gallery.ui.modelmanager.ModelManagerViewModel
 import com.google.ai.edge.gallery.ui.theme.customColors
@@ -94,14 +95,10 @@ fun ModelItem(
   val isBestOverall = model.bestForTaskIds.contains(task.id)
   var isExpanded by remember { mutableStateOf(isBestOverall) }
 
-  var boxModifier =
-    modifier
-      .fillMaxWidth()
-      .clip(RoundedCornerShape(size = 12.dp))
-      .background(color = MaterialTheme.customColors.taskCardBgColor)
-  boxModifier =
+  var cardModifier = modifier.fillMaxWidth()
+  cardModifier =
     if (canExpand) {
-      boxModifier.clickable(
+      cardModifier.clickable(
         onClick = {
           if (!model.imported) {
             isExpanded = !isExpanded
@@ -113,10 +110,14 @@ fun ModelItem(
         indication = ripple(bounded = true, radius = 1000.dp),
       )
     } else {
-      boxModifier
+      cardModifier
     }
 
-  Box(modifier = boxModifier) {
+  GlassCard(
+    modifier = cardModifier,
+    shape = RoundedCornerShape(size = 24.dp),
+    backgroundColor = MaterialTheme.customColors.taskCardBgColor,
+  ) {
     SharedTransitionLayout {
       AnimatedContent(isExpanded, label = "item_layout_transition") { targetState ->
         val deleteModelButton =

@@ -74,6 +74,7 @@ import androidx.compose.ui.window.Dialog
 import com.google.ai.edge.gallery.BuildConfig
 import com.google.ai.edge.gallery.R
 import com.google.ai.edge.gallery.proto.Theme
+import com.google.ai.edge.gallery.ui.common.GlassSurface
 import com.google.ai.edge.gallery.ui.common.tos.TosDialog
 import com.google.ai.edge.gallery.ui.modelmanager.ModelManagerViewModel
 import com.google.ai.edge.gallery.ui.theme.ThemeSettings
@@ -108,7 +109,7 @@ fun SettingsDialog(
 
   Dialog(onDismissRequest = onDismissed) {
     val focusManager = LocalFocusManager.current
-    Card(
+    GlassSurface(
       modifier =
         Modifier.fillMaxWidth().clickable(
           interactionSource = interactionSource,
@@ -116,7 +117,7 @@ fun SettingsDialog(
         ) {
           focusManager.clearFocus()
         },
-      shape = RoundedCornerShape(16.dp),
+      shape = RoundedCornerShape(24.dp),
     ) {
       Column(
         modifier = Modifier.padding(20.dp),

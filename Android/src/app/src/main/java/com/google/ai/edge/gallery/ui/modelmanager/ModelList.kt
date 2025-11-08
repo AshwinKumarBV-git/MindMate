@@ -142,7 +142,6 @@ fun ModelList(
 
   Box(
     contentAlignment = Alignment.BottomEnd,
-    modifier = Modifier.background(color = getTaskBgColor(task = task)),
   ) {
     LazyColumn(
       modifier = modifier.padding(top = 32.dp).padding(horizontal = 16.dp),

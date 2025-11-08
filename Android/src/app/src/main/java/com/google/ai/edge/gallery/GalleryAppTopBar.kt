@@ -34,6 +34,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
+import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -59,6 +60,12 @@ fun GalleryTopAppBar(
 ) {
   val titleColor = MaterialTheme.colorScheme.onSurface
   CenterAlignedTopAppBar(
+    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+      containerColor = Color.Transparent,
+      titleContentColor = MaterialTheme.colorScheme.onSurface,
+      navigationIconContentColor = MaterialTheme.colorScheme.onSurface,
+      actionIconContentColor = MaterialTheme.colorScheme.onSurface
+    ),
     title = {
       Column(horizontalAlignment = Alignment.CenterHorizontally) {
         Row(
